@@ -1,7 +1,7 @@
 {
-  "name": "aitest",
+  "name": "aigc",
   "version": "1.0.0",
-  "description": "Writes your test case for you with AI",
+  "description": "Generate code for you with AI",
   "bin": {
     "aitest": "bin.mjs"
   },
@@ -46,8 +46,13 @@
     "@durka/cli": "latest",
     "@serpent/common-cli": "^3.0.0",
     "@types/node": "^14",
+    "openai": "^3.1.0",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "gpt-3-encoder": "^1.1.4",
+    "ora": "^6.1.2"
   },
   "jest": {
     "preset": "./durka/vendors/jest-config"
@@ -62,7 +67,7 @@
   ],
   "repository": {
     "type": "git",
-    "repository": "git@github.com:durkajs/example-ts-node-cli.git"
+    "repository": "git@github.com:durkajs/aitest.git"
   },
   "commitlint": {
     "extends": [

@@ -1,6 +1,6 @@
-# aitest
+# aigc
 
-Writes your test case for you with AI
+Generate code for you with AI
 
 
 ## Installation

@@ -1,1 +1,1 @@
-export const COMMAND_KEY = 'aitest'
+export const COMMAND = 'aigc'
