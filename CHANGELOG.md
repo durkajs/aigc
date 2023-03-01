@@ -1,3 +1,15 @@
+## 1.0.1 (2023-03-01)
+
+
+### Features
+
+* add clipboardy package and support copy output to clipboard ([53f75c3](https://github.com/durkajs/aigc/commit/53f75c3e3957de115a84cfead29b6ec2f7470447))
+* add usage in README.md ([864bbec](https://github.com/durkajs/aigc/commit/864bbecca0a39feb9e0e5eade9f26e2c8f62e957))
+* init new project from @durka/example-ts-node-cli__boilerplate ([523676b](https://github.com/durkajs/aigc/commit/523676b231bab13fcbc7622a05492234e0c971bc))
+* support text completion ([bc2eb6c](https://github.com/durkajs/aigc/commit/bc2eb6c6d955a86a2d0d568ad3b84be6cf7cd7f3))
+
+
+
 ## [0.2.1](https://github.com/durkajs/example-ts-node-cli/compare/v0.2.0...v0.2.1) (2023-02-02)
 
 
