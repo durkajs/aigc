@@ -17,7 +17,7 @@ export default cmd({
 }, async(ctx) => {
   const { spinner: enableSpinner, output, size, ...opts } = ctx.options
 
-  await tryRun(ora({ isEnabled: enableSpinner }), async(spinner) => {
+  await tryRun(ora({ isEnabled: enableSpinner, prefixText: 'The AI is generating image' }), async(spinner) => {
     const res = await openai().createImage({
       prompt:          ctx.args.join(' '),
       n:               opts.n,

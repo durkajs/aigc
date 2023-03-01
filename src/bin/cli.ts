@@ -50,8 +50,9 @@ export default cmd(
   async ctx => {
     const { prompt = '', stdin, spinner: enableSpinner, echo, code, ada, ...opts } = ctx.options
 
+    const envPrompt = process.env[`AIGC_PROMPT_${prompt}`]
     const newPrompt = [
-      prompt && process.env[prompt] ? process.env[prompt] : prompt,
+      envPrompt ? envPrompt : prompt,
       await (stdin ? readContentFromStdin() : readContentFromFiles(ctx.args)),
     ].filter(str => !!str.trim()).join('\n\n')
 
@@ -99,7 +100,7 @@ function readContentFromFiles(files: string[]) {
   return Promise.all(files.map(file => new Promise<string>((resolve, reject) => {
 
     fs.access(file, (err) => {
-      if (err) return err.code !== 'ENOENT' && reject(err)
+      if (err) return resolve(file)
 
       fs.readFile(file, (err, data) => {
         if (err) return reject(err)
