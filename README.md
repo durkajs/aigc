@@ -29,7 +29,18 @@ This library additionally provides an `aigc` command-line utility which makes it
 aigc list-models
 # create a completion
 aigc --prompt "Write unit test for the code below" path/to/your/codeFile
+# create image
+aigc image "cute cat"
 ```
+
+#### Example 1: Generate document comment for function
+
+![Generate document comment](https://mdn.alipayobjects.com/huamei_am125r/afts/img/A*_gezSIVeBHoAAAAAAAAAAAAADjp-AQ/original)
+
+
+#### Example 2: Generate unit test for function
+
+![Generate unit test](https://mdn.alipayobjects.com/huamei_am125r/afts/img/A*ng82S7WiUEsAAAAAAAAAAAAADjp-AQ/original)
 
 
 <!--
