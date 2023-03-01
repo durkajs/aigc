@@ -1,6 +1,6 @@
 {
   "name": "aigc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate content for you with OpenAI",
   "bin": {
     "aigc": "bin.mjs"
