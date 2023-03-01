@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/durkajs/aigc/compare/v1.0.2...v1.0.3) (2023-03-01)
+
+
+### Features
+
+* update CLI prompt handling and image generation spinner text ([0ce516d](https://github.com/durkajs/aigc/commit/0ce516dc66f2caaeedef0b35a3d3c963440b5e40))
+
+
+
 ## [1.0.2](https://github.com/durkajs/aigc/compare/v1.0.1...v1.0.2) (2023-03-01)
 
 
