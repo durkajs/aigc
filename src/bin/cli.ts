@@ -1,5 +1,6 @@
 import fs from 'fs'
 import ora from 'ora'
+import clip from 'clipboardy'
 import { cmd, env, opt, sub } from '@serpent/common-cli/cmder'
 import { COMMAND } from 'src/config/constant.js'
 import { aigc } from 'src/util/openai.js'
@@ -64,6 +65,9 @@ export default cmd(
         ctx.logger.warn(res)
       } else if (choices.length === 1) {
         console.log(choices[0].text)
+        clip.write(choices[0].text)
+          .then(() => ctx.logger.clog(`\n%c%s`, 'gray', 'The content has been copied to the clipboard'))
+          .catch(() => {})
       } else {
         choices.forEach((choice, i) => {
           ctx.logger.head(`Choice ${i + 1}`)

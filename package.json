@@ -51,6 +51,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "clipboardy": "^3.0.0",
     "gpt-3-encoder": "^1.1.4",
     "ora": "^6.1.2"
   },
