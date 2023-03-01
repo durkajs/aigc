@@ -21,7 +21,8 @@ export default cmd(
       spinner:           opt('boolean', 'Display spinner or not, enabled by default. You can disable it by using `--spinner=false` {{ true }}'),
       stdin:             opt('boolean', 'Read additional prompt information from stdin'),
       echo:              opt('boolean', 'Echo the prompt in terminal'),
-      code:              opt('boolean', '<c> Setting the GPT model to "code-davinci-002" is equivalent to using the option `--model=code-davinci-002`'),
+      code:              opt('boolean', 'Setting the GPT model to "code-davinci-002" (codex model) is equivalent to using the option `--model=code-davinci-002`'),
+      ada:               opt('boolean', 'Setting the GPT model to "text-ada-001" (fastest model) is equivalent to using the option `--model=text-ada-001`'),
       temperature:       opt('number', '[GPT] <t> Between 0 and 2. Higher values make the output more random, lower values make it more focused and deterministic {{ 0.7 }}'),
       model:             opt('string', `[GPT] <m> ID of the model to use, using \`${COMMAND} models\` show currently available models {{ "text-davinci-003" }}`),
       prompt:            opt('string', '[GPT] <p> The prompt to generate completions for, or the key of the prompt saved in the environment variable'),
@@ -47,7 +48,7 @@ export default cmd(
     },
   },
   async ctx => {
-    const { prompt = '', stdin, spinner: enableSpinner, echo, code, ...opts } = ctx.options
+    const { prompt = '', stdin, spinner: enableSpinner, echo, code, ada, ...opts } = ctx.options
 
     const newPrompt = [
       prompt && process.env[prompt] ? process.env[prompt] : prompt,
@@ -59,6 +60,7 @@ export default cmd(
       const stop = opts.stop && opts.stop.split(/\s*,\s*/) // turn `stop` prop to array
       const logit_bias = opts.logit_bias && JSON.parse(opts.logit_bias) // turn `logit_bias` prop to json
       if (code) opts.model = 'code-davinci-002'
+      else if (ada) opts.model = 'text-ada-001'
       const res = await aigc({ ...opts, stop, logit_bias, prompt: `${newPrompt}` })
 
       // stop spinner and output result
