@@ -5,7 +5,7 @@ export function openai() {
   const key = env.OPENAI_KEY || env.OPENAI_API_KEY
 
   if (!key) {
-    throw new Error('Please set your OpenAI API key "OPENAI_KEY" in env.')
+    throw new Error('Please set your OpenAI API key "OPENAI_API_KEY" in env.')
   }
 
   return new OpenAIApi(new Configuration({ apiKey: key }))
