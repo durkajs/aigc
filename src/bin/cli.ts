@@ -24,7 +24,7 @@ export default cmd(
       code:              opt('boolean', '<c> Setting the GPT model to "code-davinci-002" is equivalent to using the option `--model=code-davinci-002`'),
       temperature:       opt('number', '[GPT] <t> Between 0 and 2. Higher values make the output more random, lower values make it more focused and deterministic {{ 0.7 }}'),
       model:             opt('string', `[GPT] <m> ID of the model to use, using \`${COMMAND} models\` show currently available models {{ "text-davinci-003" }}`),
-      prompt:            opt('string', '[GPT] <p> The prompt to generate completions for'),
+      prompt:            opt('string', '[GPT] <p> The prompt to generate completions for, or the key of the prompt saved in the environment variable'),
       presence_penalty:  opt('number', '[GPT] Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far {{ 0 }}'),
       frequency_penalty: opt('number', '[GPT] Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far {{ 0 }}'),
       max_tokens:        opt('number', '[GPT] <M> The maximum number of tokens to generate in the completion {{ 1000 }}'),
@@ -49,8 +49,10 @@ export default cmd(
   async ctx => {
     const { prompt = '', stdin, spinner: enableSpinner, echo, code, ...opts } = ctx.options
 
-    const additional = await (stdin ? readContentFromStdin() : readContentFromFiles(ctx.args))
-    const newPrompt = [ prompt, additional ].filter(str => !!str.trim()).join('\n\n')
+    const newPrompt = [
+      prompt && process.env[prompt] ? process.env[prompt] : prompt,
+      await (stdin ? readContentFromStdin() : readContentFromFiles(ctx.args)),
+    ].filter(str => !!str.trim()).join('\n\n')
 
     if (echo) console.log(newPrompt + '\n')
     return tryRun(ora({ isEnabled: enableSpinner, prefixText: 'The AI is generating content' }), async(spinner) => {
