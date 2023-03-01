@@ -43,6 +43,7 @@ export default cmd(
     commands: {
       '<list-models> Lists the currently available models': sub('./cli-list-models.js'),
       '<tokenizer> Convert text to token IDs':              sub('./cli-tokenizer.js'),
+      '<image> Creates an image given a prompt':            sub('./cli-image.js'),
     },
   },
   async ctx => {
