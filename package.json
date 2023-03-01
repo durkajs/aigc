@@ -1,9 +1,9 @@
 {
   "name": "aigc",
   "version": "1.0.0",
-  "description": "Generate code for you with AI",
+  "description": "Generate content for you with OpenAI",
   "bin": {
-    "aitest": "bin.mjs"
+    "aigc": "bin.mjs"
   },
   "type": "module",
   "files": [
