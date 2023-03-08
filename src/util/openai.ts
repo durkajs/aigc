@@ -8,7 +8,7 @@ export function openai() {
     throw new Error('Please set your OpenAI API key "OPENAI_API_KEY" in env.')
   }
 
-  return new OpenAIApi(new Configuration({ apiKey: key }))
+  return new OpenAIApi(new Configuration({ apiKey: key }), process.env.OPENAI_BASE_URL)
 }
 
 export async function aigc(options: { prompt: string } & Omit<Partial<CreateCompletionRequest>, 'prompt'>) {
